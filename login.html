@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Authentication</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
             align-items: center;
         }
 
-        .login-container {
+        .container {
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -29,7 +29,7 @@
             max-width: 400px;
         }
 
-        .login-container h1 {
+        .container h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
@@ -61,7 +61,7 @@
             border-color: #667eea;
         }
 
-        .login-btn {
+        .btn {
             width: 100%;
             padding: 12px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -74,79 +74,76 @@
             transition: transform 0.2s;
         }
 
-        .login-btn:hover {
+        .btn:hover {
             transform: translateY(-2px);
         }
 
-        .login-btn:active {
-            transform: translateY(0);
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
         }
 
-        .error-message {
+        .error {
             color: #dc3545;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-            display: none;
         }
 
-        .success-message {
+        .success {
             color: #28a745;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
+    <div class="container">
+        <h1>Sign In</h1>
+        <form id="form">
             <div class="form-group">
-                <label for="username">Login:</label>
-                <input type="text" id="username" name="username" placeholder="Loginni kiriting" required>
+                <label for="user">Username:</label>
+                <input type="text" id="user" name="user" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Parol:</label>
-                <input type="password" id="password" name="password" placeholder="Parolni kiriting" required>
+                <label for="pass">Password:</label>
+                <input type="password" id="pass" name="pass" required>
             </div>
 
-            <button type="submit" class="login-btn">Kirish</button>
+            <button type="submit" class="btn">Login</button>
 
-            <div class="error-message" id="errorMessage">Login yoki parol noto'g'ri!</div>
-            <div class="success-message" id="successMessage">Muvaffaqiyatli kirdingiz!</div>
+            <div class="message error" id="err">Invalid credentials</div>
+            <div class="message success" id="ok">Success!</div>
         </form>
     </div>
 
     <script>
-        const loginForm = document.getElementById('loginForm');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-
-        const correctUsername = 'Umarov.no1';
-        const correctPassword = 'Umarov.no1';
-
-        loginForm.addEventListener('submit', function(e) {
+        document.getElementById('form').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
 
-            // Xatolarni tozalash
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
+            document.getElementById('err').style.display = 'none';
+            document.getElementById('ok').style.display = 'none';
 
-            // Tekshirish
-            if (username === correctUsername && password === correctPassword) {
-                successMessage.style.display = 'block';
-                setTimeout(function() {
-                    window.location.href = 'http://shartnoma-qr.uz/tabrik.html';
-                }, 1500);
-            } else {
-                errorMessage.style.display = 'block';
-                document.getElementById('password').value = '';
+            try {
+                const r = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user: u, pass: p })
+                });
+
+                if (r.ok) {
+                    document.getElementById('ok').style.display = 'block';
+                    setTimeout(() => {
+                        window.location.href = 'http://shartnoma-qr.uz/tabrik.html';
+                    }, 1500);
+                } else {
+                    document.getElementById('err').style.display = 'block';
+                    document.getElementById('pass').value = '';
+                }
+            } catch (e) {
+                document.getElementById('err').style.display = 'block';
+                document.getElementById('pass').value = '';
             }
         });
     </script>
