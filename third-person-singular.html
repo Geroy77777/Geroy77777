@@ -152,21 +152,33 @@
             border-radius: 5px;
             font-size: 13px;
             transition: border-color 0.3s ease;
+            color: transparent;
+            text-shadow: 0 0 0 #333;
+        }
+        
+        .input-section input::placeholder {
+            color: transparent;
         }
         
         .input-section input:focus {
             outline: none;
             border-color: #667eea;
+            color: transparent;
+            text-shadow: 0 0 0 #333;
         }
         
         .input-section input.correct {
             border-color: #28a745;
             background: #f0fff4;
+            color: #333;
+            text-shadow: none;
         }
         
         .input-section input.incorrect {
             border-color: #dc3545;
             background: #fff5f5;
+            color: transparent;
+            text-shadow: 0 0 0 #333;
         }
         
         .button-group {
@@ -366,11 +378,11 @@
                         </div>
                         <div class="input-section">
                             <label>Qisqartma</label>
-                            <input type="text" id="${simpleInputId}" placeholder="watch" autocomplete="off">
+                            <input type="text" id="${simpleInputId}" autocomplete="off">
                         </div>
                         <div class="input-section">
                             <label>Uzaytma (She/He/It)</label>
-                            <input type="text" id="${complexInputId}" placeholder="watches" autocomplete="off">
+                            <input type="text" id="${complexInputId}" autocomplete="off">
                         </div>
                         <div class="button-group">
                             <button class="check-btn" onclick="checkBoth('${simpleInputId}', '${complexInputId}')">Tekshirish</button>
