@@ -19,7 +19,7 @@
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
@@ -101,8 +101,8 @@
         
         .word-info {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 12px;
             margin-bottom: 15px;
         }
         
@@ -113,20 +113,23 @@
         .word-section label {
             display: block;
             color: #666;
-            font-size: 11px;
+            font-size: 10px;
             margin-bottom: 5px;
             font-weight: bold;
             text-transform: uppercase;
         }
         
         .word-section p {
-            font-size: 16px;
+            font-size: 15px;
             color: #333;
             font-weight: bold;
             padding: 10px;
             background: white;
             border-radius: 5px;
             word-break: break-word;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
         }
         
         .input-section {
@@ -136,7 +139,7 @@
         .input-section label {
             display: block;
             color: #666;
-            font-size: 11px;
+            font-size: 10px;
             margin-bottom: 5px;
             font-weight: bold;
             text-transform: uppercase;
@@ -147,7 +150,7 @@
             padding: 10px;
             border: 2px solid #e9ecef;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 13px;
             transition: border-color 0.3s ease;
         }
         
@@ -172,10 +175,10 @@
         }
         
         .check-btn, .clear-btn {
-            padding: 10px 15px;
+            padding: 10px 12px;
             border: none;
             border-radius: 5px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -211,7 +214,7 @@
         
         .feedback {
             margin-top: 10px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             display: none;
         }
@@ -265,6 +268,12 @@
             box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
         }
 
+        @media (max-width: 1024px) {
+            .word-info {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .word-info {
                 grid-template-columns: 1fr;
@@ -275,7 +284,7 @@
 <body>
     <div class="container">
         <h1>📚 3-shaxs Singular Feallari (She/He/It)</h1>
-        <p class="subtitle">Simple Present - +es qo'shiladi - Tarjimani yozing</p>
+        <p class="subtitle">Simple Present - Watch + es = Watches</p>
         
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill">0%</div>
@@ -293,34 +302,34 @@
     <script>
         const words = [
             // She
-            { english: "watches", uzbek: "ko'radi", section: "She" },
-            { english: "teaches", uzbek: "o'qitadi", section: "She" },
-            { english: "catches", uzbek: "tutib oladi", section: "She" },
-            { english: "washes", uzbek: "yuvadi", section: "She" },
-            { english: "finishes", uzbek: "tugashtiradi", section: "She" },
-            { english: "brushes", uzbek: "cho'tkalaadi", section: "She" },
-            { english: "wishes", uzbek: "orzu qiladi", section: "She" },
-            { english: "publishes", uzbek: "nashr qiladi", section: "She" },
+            { infinitive: "Ko'rmoq", simple: "watch", complex: "watches", section: "She" },
+            { infinitive: "O'qitmoq", simple: "teach", complex: "teaches", section: "She" },
+            { infinitive: "Tutib qolmoq", simple: "catch", complex: "catches", section: "She" },
+            { infinitive: "Yuvmoq", simple: "wash", complex: "washes", section: "She" },
+            { infinitive: "Tugashtirmoq", simple: "finish", complex: "finishes", section: "She" },
+            { infinitive: "Cho'tkalamoq", simple: "brush", complex: "brushes", section: "She" },
+            { infinitive: "Tilak qilmoq", simple: "wish", complex: "wishes", section: "She" },
+            { infinitive: "Nashr qilmoq", simple: "publish", complex: "publishes", section: "She" },
             
             // He
-            { english: "studies", uzbek: "o'rganadi", section: "He" },
-            { english: "carries", uzbek: "ko'tarib olib boradi", section: "He" },
-            { english: "cries", uzbek: "yig'ladi", section: "He" },
-            { english: "tries", uzbek: "harakat qiladi", section: "He" },
-            { english: "flies", uzbek: "uchadi", section: "He" },
-            { english: "hurries", uzbek: "shoshiladi", section: "He" },
-            { english: "worries", uzbek: "xavotirlanadi", section: "He" },
-            { english: "replies", uzbek: "javob beradi", section: "He" },
-            { english: "copies", uzbek: "nusxalaadi", section: "He" },
+            { infinitive: "O'rganmoq", simple: "study", complex: "studies", section: "He" },
+            { infinitive: "Ko'tarib olib bormoq", simple: "carry", complex: "carries", section: "He" },
+            { infinitive: "Yig'lamoq", simple: "cry", complex: "cries", section: "He" },
+            { infinitive: "Harakat qilmoq", simple: "try", complex: "tries", section: "He" },
+            { infinitive: "Uchamoq", simple: "fly", complex: "flies", section: "He" },
+            { infinitive: "Shoshilmoq", simple: "hurry", complex: "hurries", section: "He" },
+            { infinitive: "Xavotirlanmoq", simple: "worry", complex: "worries", section: "He" },
+            { infinitive: "Javob bermoq", simple: "reply", complex: "replies", section: "He" },
+            { infinitive: "Nusxalamoq", simple: "copy", complex: "copies", section: "He" },
             
             // It
-            { english: "plays", uzbek: "o'ynadi", section: "It" },
-            { english: "enjoys", uzbek: "bahramand bo'ladi", section: "It" },
-            { english: "stays", uzbek: "qoladi", section: "It" },
-            { english: "buys", uzbek: "sotib oladi", section: "It" },
-            { english: "says", uzbek: "aytadi", section: "It" },
-            { english: "pays", uzbek: "to'ladi", section: "It" },
-            { english: "destroys", uzbek: "vayron qiladi", section: "It" },
+            { infinitive: "O'ynamoq", simple: "play", complex: "plays", section: "It" },
+            { infinitive: "Bahramand bo'lmoq", simple: "enjoy", complex: "enjoys", section: "It" },
+            { infinitive: "Qolamoq", simple: "stay", complex: "stays", section: "It" },
+            { infinitive: "Sotib olmoq", simple: "buy", complex: "buys", section: "It" },
+            { infinitive: "Ayitmoq", simple: "say", complex: "says", section: "It" },
+            { infinitive: "To'lamoq", simple: "pay", complex: "pays", section: "It" },
+            { infinitive: "Vayron qilmoq", simple: "destroy", complex: "destroys", section: "It" },
         ];
         
         let answers = {};
@@ -343,79 +352,122 @@
                 const card = document.createElement('div');
                 card.className = 'word-card';
                 
-                const inputId = `input-${index}`;
-                answers[inputId] = { word: word.english, checked: false };
+                const simpleInputId = `simple-${index}`;
+                const complexInputId = `complex-${index}`;
+                
+                answers[simpleInputId] = { word: word.simple, checked: false };
+                answers[complexInputId] = { word: word.complex, checked: false };
                 
                 card.innerHTML = `
                     <div class="word-info">
                         <div class="word-section">
-                            <label>Ingliz tili</label>
-                            <p>${word.english}</p>
-                        </div>
-                        <div class="word-section">
-                            <label>Tarjima (o'zbek)</label>
-                            <p>${word.uzbek}</p>
+                            <label>O'zbek (-moq)</label>
+                            <p>${word.infinitive}</p>
                         </div>
                         <div class="input-section">
-                            <label>Inglizcha yozing</label>
-                            <input type="text" id="${inputId}" placeholder="Fealini kiriting..." autocomplete="off">
+                            <label>Qisqartma</label>
+                            <input type="text" id="${simpleInputId}" placeholder="watch" autocomplete="off">
+                        </div>
+                        <div class="input-section">
+                            <label>Uzaytma (She/He/It)</label>
+                            <input type="text" id="${complexInputId}" placeholder="watches" autocomplete="off">
+                        </div>
+                        <div class="button-group">
+                            <button class="check-btn" onclick="checkBoth('${simpleInputId}', '${complexInputId}')">Tekshirish</button>
+                            <button class="clear-btn" onclick="clearBoth('${simpleInputId}', '${complexInputId}')">Tozalash</button>
                         </div>
                     </div>
-                    <div class="button-group">
-                        <button class="check-btn" onclick="checkAnswer('${inputId}')">Tekshirish</button>
-                        <button class="clear-btn" onclick="clearInput('${inputId}')">Tozalash</button>
-                    </div>
-                    <div class="feedback" id="feedback-${inputId}"></div>
+                    <div class="feedback" id="feedback-${simpleInputId}"></div>
+                    <div class="feedback" id="feedback-${complexInputId}"></div>
                 `;
                 
                 container.appendChild(card);
                 
                 // Enter tugmasida tekshirish
-                document.getElementById(inputId).addEventListener('keypress', function(e) {
+                document.getElementById(simpleInputId).addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
-                        checkAnswer(inputId);
+                        document.getElementById(complexInputId).focus();
+                    }
+                });
+                
+                document.getElementById(complexInputId).addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkBoth(simpleInputId, complexInputId);
                     }
                 });
             });
         }
         
-        function checkAnswer(inputId) {
-            const input = document.getElementById(inputId);
-            const feedback = document.getElementById(`feedback-${inputId}`);
-            const correctAnswer = answers[inputId].word;
-            const userAnswer = input.value.trim().toLowerCase();
+        function checkBoth(simpleInputId, complexInputId) {
+            const simpleInput = document.getElementById(simpleInputId);
+            const complexInput = document.getElementById(complexInputId);
+            const simpleFeedback = document.getElementById(`feedback-${simpleInputId}`);
+            const complexFeedback = document.getElementById(`feedback-${complexInputId}`);
             
-            if (userAnswer === '') {
-                feedback.textContent = '⚠️ Iltimos, fealini kiriting!';
-                feedback.className = 'feedback incorrect';
-                return;
-            }
+            const correctSimple = answers[simpleInputId].word;
+            const correctComplex = answers[complexInputId].word;
             
-            if (userAnswer === correctAnswer.toLowerCase()) {
-                input.className = 'correct';
-                feedback.textContent = '✅ To\'g\'ri!';
-                feedback.className = 'feedback correct';
-                input.disabled = true;
-                answers[inputId].checked = true;
+            const userSimple = simpleInput.value.trim().toLowerCase();
+            const userComplex = complexInput.value.trim().toLowerCase();
+            
+            let simpleCorrect = false;
+            let complexCorrect = false;
+            
+            if (userSimple === '') {
+                simpleFeedback.textContent = '⚠️ Qisqartmani kiriting!';
+                simpleFeedback.className = 'feedback incorrect';
+            } else if (userSimple === correctSimple.toLowerCase()) {
+                simpleInput.className = 'correct';
+                simpleFeedback.textContent = '✅ To\'g\'ri!';
+                simpleFeedback.className = 'feedback correct';
+                simpleInput.disabled = true;
+                simpleCorrect = true;
             } else {
-                input.className = 'incorrect';
-                feedback.textContent = `❌ Noto'g'ri! To'g'ri javob: ${correctAnswer}`;
-                feedback.className = 'feedback incorrect';
-                input.value = '';
+                simpleInput.className = 'incorrect';
+                simpleFeedback.textContent = `❌ Noto'g'ri! To'g'ri javob: ${correctSimple}`;
+                simpleFeedback.className = 'feedback incorrect';
+                simpleInput.value = '';
             }
             
-            updateProgress();
+            if (userComplex === '') {
+                complexFeedback.textContent = '⚠️ Uzaytmani kiriting!';
+                complexFeedback.className = 'feedback incorrect';
+            } else if (userComplex === correctComplex.toLowerCase()) {
+                complexInput.className = 'correct';
+                complexFeedback.textContent = '✅ To\'g\'ri!';
+                complexFeedback.className = 'feedback correct';
+                complexInput.disabled = true;
+                complexCorrect = true;
+            } else {
+                complexInput.className = 'incorrect';
+                complexFeedback.textContent = `❌ Noto'g'ri! To'g'ri javob: ${correctComplex}`;
+                complexFeedback.className = 'feedback incorrect';
+                complexInput.value = '';
+            }
+            
+            if (simpleCorrect && complexCorrect) {
+                answers[simpleInputId].checked = true;
+                answers[complexInputId].checked = true;
+                updateProgress();
+            }
         }
         
-        function clearInput(inputId) {
-            const input = document.getElementById(inputId);
-            const feedback = document.getElementById(`feedback-${inputId}`);
+        function clearBoth(simpleInputId, complexInputId) {
+            const simpleInput = document.getElementById(simpleInputId);
+            const complexInput = document.getElementById(complexInputId);
+            const simpleFeedback = document.getElementById(`feedback-${simpleInputId}`);
+            const complexFeedback = document.getElementById(`feedback-${complexInputId}`);
             
-            if (!input.disabled) {
-                input.value = '';
-                input.className = '';
-                feedback.textContent = '';
-                feedback.className = 'feedback';
+            if (!simpleInput.disabled && !complexInput.disabled) {
+                simpleInput.value = '';
+                simpleInput.className = '';
+                simpleFeedback.textContent = '';
+                simpleFeedback.className = 'feedback';
+                
+                complexInput.value = '';
+                complexInput.className = '';
+                complexFeedback.textContent = '';
+                complexFeedback.className = 'feedback';
             }
         }
         
