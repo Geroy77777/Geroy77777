@@ -296,7 +296,7 @@
 <body>
     <div class="container">
         <h1>📚 3-shaxs Singular Feallari (She/He/It)</h1>
-        <p class="subtitle">Simple Present - Watch + es = Watches</p>
+        <p class="subtitle">O'zbek so'zini ko'rib, ingliz va +es formasi yozing</p>
         
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill">0%</div>
@@ -377,11 +377,11 @@
                             <p>${word.infinitive}</p>
                         </div>
                         <div class="input-section">
-                            <label>Qisqartma</label>
+                            <label>Inglizcha</label>
                             <input type="text" id="${simpleInputId}" autocomplete="off">
                         </div>
                         <div class="input-section">
-                            <label>Uzaytma (She/He/It)</label>
+                            <label>+es ko'shilgan</label>
                             <input type="text" id="${complexInputId}" autocomplete="off">
                         </div>
                         <div class="button-group">
@@ -426,7 +426,7 @@
             let complexCorrect = false;
             
             if (userSimple === '') {
-                simpleFeedback.textContent = '⚠️ Qisqartmani kiriting!';
+                simpleFeedback.textContent = '⚠️ Inglizcha yozing!';
                 simpleFeedback.className = 'feedback incorrect';
             } else if (userSimple === correctSimple.toLowerCase()) {
                 simpleInput.className = 'correct';
@@ -442,7 +442,7 @@
             }
             
             if (userComplex === '') {
-                complexFeedback.textContent = '⚠️ Uzaytmani kiriting!';
+                complexFeedback.textContent = '⚠️ +es ko\'shilgan formani yozing!';
                 complexFeedback.className = 'feedback incorrect';
             } else if (userComplex === correctComplex.toLowerCase()) {
                 complexInput.className = 'correct';
